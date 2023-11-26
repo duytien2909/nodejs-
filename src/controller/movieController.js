@@ -13,6 +13,7 @@ exports.homepage = async (req, res) => {
     .slice(0, perpage);
 
   const count = await db.Movies.length;
+  const message = "";
 
   try {
     res.render("index", {
@@ -22,6 +23,7 @@ exports.homepage = async (req, res) => {
       slider,
       sliderTwo,
       sliderThree,
+      message,
       pages: Math.ceil(count / perpage),
     });
   } catch (error) {
@@ -55,16 +57,40 @@ exports.searchMovie = async (req, res) => {
   const locals = {
     title: "Search Movie",
   };
+  const message = " movie title not found";
+  let perpage = 5;
+  let page = req.query.page || 1;
+  const slider = await db.Movies.map((i) => i).slice(1, 5);
+  const sliderTwo = await db.Movies.map((i) => i).slice(15, 30);
+  const sliderThree = await db.Movies.map((i) => i).slice(31, 46);
+
+  const movieTitle = await db.Movies.map((i) => i)
+    .slice(perpage * page - perpage)
+    .slice(0, perpage);
+
+  const count = await db.Movies.length;
+
+  let searchProduct = req.body.searchItem;
+  const movie = await db.Movies.find((i) => i.title === searchProduct);
+
   try {
-    let searchProduct = req.body.searchItem;
-    const movie = await db.Movies.find((i) => i.title === searchProduct);
     if (!movie) {
-      alert("Movie not found")
+      res.render("index", {
+        locals,
+        movieTitle,
+        current: page,
+        slider,
+        sliderTwo,
+        sliderThree,
+        message,
+        pages: Math.ceil(count / perpage),
+      });
+    } else {
+      res.render("FAV/search", {
+        movie,
+        locals,
+      });
     }
-    res.render("FAV/search", {
-      movie,
-      locals,
-    });
   } catch (error) {
     console.log(error);
   }
