@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Document</title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="../public/style.css" />
+        <script
+            src="https://kit.fontawesome.com/a4250105eb.js"
+            crossorigin="anonymous"></script>
+        <style>
+      .sidler-btn,
+      .sidler-three-btn {
+        position: absolute;
+        top: 50%;
+        display: flex;
+        justify-content: space-between;
+        width: 100%;
+      }
+
+      .sidler-btn i,
+      .sidler-three-btn i {
+        color: rgb(215, 212, 212);
+        font-size: 32px;
+        height: 50px;
+        width: 25px;
+        background-color: rgb(27, 23, 23);
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        transform: translateY(-50%);
+        border-radius: 5px;
+        opacity: 0;
+        transition: all 0.3 ease;
+        cursor: pointer;
+      }
+
+      .footer-row-two-silder:hover i,
+      .silder-three:hover i {
+        opacity: 1;
+      }
+
+      .footer-row-two-silder .sidler-btn i,
+      .silder-three .sidler-three-btn i {
+        z-index: 1;
+        transition: all 0.3 ease;
+      }
+
+      .footer-row-two-silder,
+      .silder-three-container {
+        position: relative;
+        width: 1200px;
+        height: fit-content;
+        margin: auto;
+        overflow: hidden;
+        cursor: pointer;
+      }
+
+      .sidler-imgs-list img,
+      .sidler-three-list img {
+        margin: 9.5px;
+      }
+      .sidler-three-list img {
+        height: 100%;
+      }
+
+      .sidler-imgs-list,
+      .sidler-three-list {
+        display: flex;
+        overflow: hidden;
+      }
+
+      .dark-mode {
+        background-color: rgb(17, 16, 16);
+        & p,
+        h2,
+        span {
+          color: #cccccc;
+          display: block;
+        }
+        & .lightMode {
+          display: block;
+        }
+        & .darkMode {
+          display: none;
+        }
+      }
+      .lightMode {
+        display: none;
+      }
+
+      .image:hover{
+          box-shadow: 1px 1px 15px #000000;
+      }
+      .title-p,.p-title{
+        visibility: hidden;
+        font-weight: 600;
+        font-size: large;
+      }
+      .image:hover + .title-p,.three-image:hover +.p-title{
+        visibility: visible;
+      }
+    </style>
+    </head>
+    <body>
+        <div>
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                    <a class="navbar-brand" href="#">Navbar</a>
+                    <button
+                        class="navbar-toggler"
+                        type="button"
+                        data-bs-toggle="collapse"
+                        data-bs-target="#navbarSupportedContent"
+                        aria-controls="navbarSupportedContent"
+                        aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse"
+                        id="navbarSupportedContent">
+                        <ul
+                            class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between">
+                            <li class="nav-item">
+                                <a class="nav-link active" aria-current="page"
+                                    href="/">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="/FAV/">Link</a>
+                            </li>
+                        </ul>
+                        <form class="d-flex" role="search">
+                            <input
+                                class="form-control me-2"
+                                type="search"
+                                placeholder="Search"
+                                aria-label="Search" />
+                            <button class="btn btn-outline-success"
+                                type="submit">
+                                Search
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </nav>
+            <div
+                id="carouselExample"
+                class="carousel slide w-50 container d-flex justify-content-center align-item-center">
+                <div class="carousel-inner">
+                    <div class="carousel-item active">
+                        <img
+                            src="https://m.media-amazon.com/images/M/MV5BZjhhMThhNDItNTY2MC00MmU1LTliNDEtNDdhZjdlNTY5ZDQ1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6762_AL_.jpg"
+                            class="d-block w-100"
+                            alt="..." />
+                    </div>
+                    <% if(slider.length> 0) {%> <% slider.forEach((element)=>{
+                    %>
+                    <div class="carousel-item">
+                        <img src="<%= element.image%>" class="d-block w-100"
+                            alt="..." />
+                    </div>
+                    <% }) %> <% } %>
+                </div>
+                <button
+                    class="carousel-control-prev"
+                    type="button"
+                    data-bs-target="#carouselExample"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button
+                    class="carousel-control-next"
+                    type="button"
+                    data-bs-target="#carouselExample"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        <div class="container">
+            <div class="w-100">
+                <div class="footer-row-two-silder">
+                    <h2>Most Popular</h2>
+                    <div class="footer-row-two-silder position-relative">
+                        <div
+                            class="sidler-btn position-absolute d-flex justify-content-between w-100 top-50">
+                            <i class="fa-solid fa-angle-left btn-fa-left"></i>
+                            <i class="fa-solid fa-angle-right btn-fa-right"></i>
+                        </div>
+                        <div class="sidler-imgs-list ">
+                            <% if(sliderTwo.length>0){%> <%
+                            sliderTwo.forEach((i)=>{ %>
+                            <div class="div-con">
+                                <img height="569.1" class="image border"
+                                    src="<%= i.image%>"
+                                    alt="...." />
+                                <p class="title-p text-center">
+                                    <%= i.fullTitle %>
+                                </p>
+                            </div>
+                            <% }) %> <% } %>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div style="width: 1200px; margin: 0 auto">
+                <div class="silder-three">
+                    <h2>Top Rating</h2>
+                    <div class="silder-three-container">
+                        <div class="sidler-three-btn">
+                            <i class="fa-solid fa-angle-left btnLeft"></i>
+                            <i class="fa-solid fa-angle-right btnRight"></i>
+                        </div>
+                        <div class="sidler-three-list d-flex">
+                            <% if(sliderThree.length>0){%> <%
+                            sliderThree.forEach((i)=>{ %>
+                            <div>
+                                <img class="three-image border"
+                                    style="height: 569.1px;" src="<%= i.image%>"
+                                    alt="...." />
+
+                                <p class="p-title text-center">
+                                    <%= i.fullTitle %>
+                                </p>
+                            </div>
+                                <% }) %> <% } %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+    <script>
+    reloads;
+    reloadThree;
+
+    const listImg = document.querySelectorAll(".image");
+    const sidlerImgs = document.querySelector(".sidler-imgs-list");
+    const btnFALeft = document.querySelector(".btn-fa-left");
+    const btnFARight = document.querySelector(".btn-fa-right");
+    const footerRowTwo = document.querySelector(".footer-row-two-silder");
+
+    var reloads = document.addEventListener("DOMContentLoaded", function () {
+      if (window.innerWidth >= 1194) {
+        make_slides(3);
+      } else if (window.innerWidth >= 965) {
+        make_slides(2);
+      } else {
+        make_slides(1);
+      }
+      const media = [
+        window.matchMedia("(min-width: 1194px)"),
+        window.matchMedia("(min-width: 965px)"),
+      ];
+
+      if (media[0].matches) {
+        make_slides(3);
+      } else if (media[1].matches) {
+        make_slides(2);
+      } else {
+        make_slides(1);
+      }
+    });
+
+    function make_slides(amount) {
+      const widthItemAndMargin = footerRowTwo.offsetWidth / amount;
+      let widthAllBox = widthItemAndMargin * listImg.length;
+      sidlerImgs.style.width = `${widthAllBox}px`;
+
+      listImg.forEach((element) => {
+        element.style.marginRight = "25";
+        element.style.width = `${widthItemAndMargin - 19}px`;
+      });
+
+      // handle slide
+      let count = 0;
+      let spacing = widthAllBox - amount * widthItemAndMargin;
+      btnFARight.addEventListener("click", function () {
+        count += widthItemAndMargin;
+
+        if (count > spacing) {
+          count = 0;
+        }
+        sidlerImgs.style.transform = `translateX(${-count}px)`;
+      });
+
+      btnFALeft.addEventListener("click", function () {
+        count -= widthItemAndMargin;
+
+        if (count < 0) {
+          count = spacing;
+        }
+        sidlerImgs.style.transform = `translateX(${-count}px)`;
+      });
+    }
+
+    const listImgThree = document.querySelectorAll(".sidler-three-list img");
+    const sidlerImgsThree = document.querySelector(".sidler-three-list");
+    const btnLeft = document.querySelector(".btnLeft");
+    const btnRight = document.querySelector(".btnRight");
+    const silderThree = document.querySelector(".silder-three");
+
+    var reloadThree = document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+        if (window.innerWidth >= 1194) {
+          make_slides_Three(3);
+        } else if (window.innerWidth >= 965) {
+          make_slides_Three(2);
+        } else {
+          make_slides_Three(1);
+        }
+        const media = [
+          window.matchMedia("(min-width: 1194px)"),
+          window.matchMedia("(min-width: 965px)"),
+        ];
+
+        if (media[0].matches) {
+          make_slides_Three(3);
+        } else if (media[1].matches) {
+          make_slides_Three(2);
+        } else {
+          make_slides_Three(1);
+        }
+      }
+    );
+
+    function make_slides_Three(sl) {
+      const widthItemAndMargin = silderThree.offsetWidth / sl;
+      let widthAllBox = widthItemAndMargin * listImgThree.length;
+      sidlerImgsThree.style.width = `${widthAllBox}px`;
+      listImgThree.forEach((element) => {
+        element.style.marginRight = "25";
+        element.style.width = `${widthItemAndMargin - 19}px`;
+      });
+
+      // handle slide
+      let count = 0;
+      let spacing = widthAllBox - sl * widthItemAndMargin;
+      btnRight.addEventListener("click", function () {
+        count += widthItemAndMargin;
+
+        if (count > spacing) {
+          count = 0;
+        }
+        sidlerImgsThree.style.transform = `translateX(${-count}px)`;
+      });
+
+      btnLeft.addEventListener("click", function () {
+        count -= widthItemAndMargin;
+
+        if (count < 0) {
+          count = spacing;
+        }
+        sidlerImgsThree.style.transform = `translateX(${-count}px)`;
+      });
+    }
+  </script>
+</html>

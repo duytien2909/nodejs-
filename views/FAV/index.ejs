@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%- locals.title %></title>
+        <link
+            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+            rel="stylesheet"
+            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+            crossorigin="anonymous">
+        <link rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+        <link rel="stylesheet" href="/css/main.css">
+    </head>
+    <body>
+
+        <div
+            class="btn-tootbar mb-2 mb-md 0 d-md-flex justify-content-md-end">
+            <div class="btn-group d-grid  me-2 ">
+                <a href="/FAV/add"
+                    class="btn btn-sm btn-outline-secondary md-5">+
+                    New Movie</a>
+            </div>
+        </div>
+
+        <div class="container-fluid container-fluid-custom md-5 ">
+            <div class="table-reponsive ">
+                <table class="table table-bordered border-black">
+                    <thead>
+                        <tr>
+                            <th class="text-center" scope="col">Movie Name</th>
+                            <th class="text-center" scope="col">Movie Image</th>
+                            <th class="text-center" scope="col">Movie Year</th>
+                            <th class="text-center" scope="col">Movie Plot</th>
+                            <th class="text-center" scope="col">Movie Languages</th>
+                            <th class="text-center" scope="col">Movie Companies</th>
+                            <th class="text-center" scope="col">Action</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <% movieTitle.forEach(element => {%>
+                        <tr class="align-middle">
+                            <td class="text-center">
+                                <%= element.title%>
+                            </td>
+                            <td class="text-center">
+                                <% if (element.image) { %>
+
+                                <img src="<%= element.image  %>"
+                                    alt=".." width="160" height="100">
+
+                                <% } else {%>
+                                <span style="color: red;">image error, title: <%=
+                                    element.title %></span>
+                                <img src="/upload/<%= element.image  %>"
+                                    alt="anh <%= element.title %>" width="160"
+                                    height="100">
+                                <% } %>
+
+                            </td>
+                            <td class="text-center">
+                                <%= element.year %>
+                            </td>
+                            <td class="text-center">
+                                <%= element.plot %>
+                            </td>
+                            <td class="text-center">
+                                <%= (element.languages)%>
+                            </td>
+                            <td class="text-center">
+                                <%= element.companies %>
+                            </td>
+                            <td class="text-center">
+                                <a href="./view/<%= element.id %> "
+                                    type="button"
+                                    class="btn btn-primary btn-small">
+                                    <i class="bi bi-eye"></i>
+                                </a>
+                                <a href="./edit/<%= element.id %> "
+                                    type="button"
+                                    class="btn btn-warning btn-small">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+
+                                <form
+                                    action="./edit/<%= element.id %>?_method=DELETE"
+                                    method="post"
+                                    class="position-relative">
+                                    <button type="submit"
+                                        class="btn btn-danger btn-small ">
+                                        <i class="bi bi-person-fill-x"></i>
+                                    </button>
+                                </form>
+                            </td>
+                        </tr>
+                        <% }) %>
+                    </tbody>
+                </table>
+            </div>
+
+            <% if (movieTitle.length > 0) { %>
+            <nav aria-label="Dashboard Pagination">
+                <ul class="pagination justify-content-center mt-5">
+                    <% if (current == 1) { %>
+                    <li class="page-item disable"> <a href="#" class="page-link">First</a>
+                    </li>
+                    <% } else { %>
+                    <li class="page-item"><a href="/FAV/?page=1"
+                            class="page-link">First</a></li>
+                    <% } %>
+
+                    <% var i = (Number(current) > 5 ? Number(current) - 4 : 1 )
+                    %>
+                    <% if (i != 1) { %>
+                    <li class="page-item disable"> <a href="#" class="page-link">....</a>
+                    </li>
+                    <% } %>
+
+                    <% for( ; i <= Number(current) + 4 && i <= pages; i++ ) { %>
+                    <% if (i == current) { %>
+                    <li class="page-item disable"> <a href="#" class="page-link"><%=
+                            i %></a> </li>
+                    <% } else {%>
+                    <li class="page-item disable"> <a href="./?page=<%= i %>"
+                            class="page-link"> <%= i %></a> </li>
+                    <% } %>
+
+                    <% if (i == Number(current) + 4 && i < pages) { %>
+                    <li class="page-item disable"> <a href="#" class="page-link">....</a>
+                    </li>
+                    <% } %>
+                    <% } %>
+
+                    <% if (current == pages) { %>
+                    <li class="page-item disable"> <a href="#" class="page-link">Last</a>
+                    </li>
+                    <% } else { %>
+                    <li class="page-item"><a href="/FAV/?page=<%= pages %>"
+                            class="page-link">Last</a></li>
+                    <% } %>
+                </ul>
+            </nav>
+            <% } %>
+        </div>
+    </body>
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</html>
