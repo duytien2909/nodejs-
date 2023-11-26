@@ -1,23 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-        <link
-            href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
-            rel="stylesheet"
-            integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-            crossorigin="anonymous" />
-        <link
-            rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
-        <link rel="stylesheet" href="../public/style.css" />
-        <script
-            src="https://kit.fontawesome.com/a4250105eb.js"
-            crossorigin="anonymous"></script>
-        <style>
-      .sidler-btn,
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+      crossorigin="anonymous" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="../public/style.css" />
+    <script
+      src="https://kit.fontawesome.com/a4250105eb.js"
+      crossorigin="anonymous"></script>
+      <link rel="stylesheet" href="../public/style.css">
+      <style>
+        body{
+          background-color: #cccccc;
+          color: #fff;
+        }
+          .sidler-btn,
       .sidler-three-btn {
         position: absolute;
         top: 50%;
@@ -108,145 +113,146 @@
       .image:hover + .title-p,.three-image:hover +.p-title{
         visibility: visible;
       }
-    </style>
-    </head>
-    <body>
-        <div>
-            <nav class="navbar navbar-expand-lg bg-body-tertiary">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Navbar</a>
-                    <button
-                        class="navbar-toggler"
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent"
-                        aria-controls="navbarSupportedContent"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse"
-                        id="navbarSupportedContent">
-                        <ul
-                            class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page"
-                                    href="/">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/FAV/">Link</a>
-                            </li>
-                        </ul>
-                        <form class="d-flex" role="search">
-                            <input
-                                class="form-control me-2"
-                                type="search"
-                                placeholder="Search"
-                                aria-label="Search" />
-                            <button class="btn btn-outline-success"
-                                type="submit">
-                                Search
-                            </button>
-                        </form>
-                    </div>
-                </div>
-            </nav>
+      </style>
+  </head>
+  <body>
+    <div>
+      <nav class="navbar navbar-expand-lg bg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Navbar</a>
+          <button
+            class="navbar-toggler"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse"
+            id="navbarSupportedContent">
+            <ul
+              class="navbar-nav me-auto mb-2 mb-lg-0 d-flex justify-content-between">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page"
+                  href="/">Home</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/FAV/">FAV Movie</a>
+              </li>
+            </ul>
+            <form action="/search" method="post" class="d-flex" role="search">
+              <input
+              name="searchItem"
+                class="form-control me-2"
+                type="search"
+                placeholder="Search"
+                aria-label="Search" />
+              <button class="btn btn-outline-success"
+                type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
+      </nav>
+      <div
+        id="carouselExample"
+        class="carousel slide w-50 container d-flex justify-content-center align-item-center">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img
+              src="https://m.media-amazon.com/images/M/MV5BZjhhMThhNDItNTY2MC00MmU1LTliNDEtNDdhZjdlNTY5ZDQ1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6762_AL_.jpg"
+              class="d-block w-100"
+              alt="..." />
+          </div>
+          <% if(slider.length> 0) {%> <% slider.forEach((element)=>{
+          %>
+          <div class="carousel-item">
+            <img src="<%= element.image%>" class="d-block w-100"
+              alt="..." />
+          </div>
+          <% }) %> <% } %>
+        </div>
+        <button
+          class="carousel-control-prev"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button
+          class="carousel-control-next"
+          type="button"
+          data-bs-target="#carouselExample"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+    <div class="container">
+      <div class="w-100">
+        <div class="footer-row-two-silder">
+          <h2>Most Popular</h2>
+          <div class="footer-row-two-silder position-relative">
             <div
-                id="carouselExample"
-                class="carousel slide w-50 container d-flex justify-content-center align-item-center">
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img
-                            src="https://m.media-amazon.com/images/M/MV5BZjhhMThhNDItNTY2MC00MmU1LTliNDEtNDdhZjdlNTY5ZDQ1XkEyXkFqcGdeQXVyNjc1NTYyMjg@._V1_Ratio0.6762_AL_.jpg"
-                            class="d-block w-100"
-                            alt="..." />
-                    </div>
-                    <% if(slider.length> 0) {%> <% slider.forEach((element)=>{
-                    %>
-                    <div class="carousel-item">
-                        <img src="<%= element.image%>" class="d-block w-100"
-                            alt="..." />
-                    </div>
-                    <% }) %> <% } %>
-                </div>
-                <button
-                    class="carousel-control-prev"
-                    type="button"
-                    data-bs-target="#carouselExample"
-                    data-bs-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Previous</span>
-                </button>
-                <button
-                    class="carousel-control-next"
-                    type="button"
-                    data-bs-target="#carouselExample"
-                    data-bs-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="visually-hidden">Next</span>
-                </button>
+              class="sidler-btn position-absolute d-flex justify-content-between w-100 top-50">
+              <i class="fa-solid fa-angle-left btn-fa-left"></i>
+              <i class="fa-solid fa-angle-right btn-fa-right"></i>
             </div>
+            <div class="sidler-imgs-list ">
+              <% if(sliderTwo.length>0){%> <%
+              sliderTwo.forEach((i)=>{ %>
+              <div class="div-con">
+                <img height="569.1" class="image border"
+                  src="<%= i.image%>"
+                  alt="...." />
+                <p class="title-p text-center">
+                  <%= i.fullTitle %>
+                </p>
+              </div>
+              <% }) %> <% } %>
+
+            </div>
+          </div>
         </div>
-        <div class="container">
-            <div class="w-100">
-                <div class="footer-row-two-silder">
-                    <h2>Most Popular</h2>
-                    <div class="footer-row-two-silder position-relative">
-                        <div
-                            class="sidler-btn position-absolute d-flex justify-content-between w-100 top-50">
-                            <i class="fa-solid fa-angle-left btn-fa-left"></i>
-                            <i class="fa-solid fa-angle-right btn-fa-right"></i>
-                        </div>
-                        <div class="sidler-imgs-list ">
-                            <% if(sliderTwo.length>0){%> <%
-                            sliderTwo.forEach((i)=>{ %>
-                            <div class="div-con">
-                                <img height="569.1" class="image border"
-                                    src="<%= i.image%>"
-                                    alt="...." />
-                                <p class="title-p text-center">
-                                    <%= i.fullTitle %>
-                                </p>
-                            </div>
-                            <% }) %> <% } %>
+      </div>
 
-                        </div>
-                    </div>
-                </div>
+      <div style="width: 1200px; margin: 0 auto">
+        <div class="silder-three">
+          <h2>Top Rating</h2>
+          <div class="silder-three-container">
+            <div class="sidler-three-btn">
+              <i class="fa-solid fa-angle-left btnLeft"></i>
+              <i class="fa-solid fa-angle-right btnRight"></i>
             </div>
+            <div class="sidler-three-list d-flex">
+              <% if(sliderThree.length>0){%> <%
+              sliderThree.forEach((i)=>{ %>
+              <div>
+                <img class="three-image border"
+                  style="height: 569.1px;" src="<%= i.image%>"
+                  alt="...." />
 
-            <div style="width: 1200px; margin: 0 auto">
-                <div class="silder-three">
-                    <h2>Top Rating</h2>
-                    <div class="silder-three-container">
-                        <div class="sidler-three-btn">
-                            <i class="fa-solid fa-angle-left btnLeft"></i>
-                            <i class="fa-solid fa-angle-right btnRight"></i>
-                        </div>
-                        <div class="sidler-three-list d-flex">
-                            <% if(sliderThree.length>0){%> <%
-                            sliderThree.forEach((i)=>{ %>
-                            <div>
-                                <img class="three-image border"
-                                    style="height: 569.1px;" src="<%= i.image%>"
-                                    alt="...." />
-
-                                <p class="p-title text-center">
-                                    <%= i.fullTitle %>
-                                </p>
-                            </div>
-                                <% }) %> <% } %>
-                        </div>
-                    </div>
-                </div>
+                <p class="p-title text-center">
+                  <%= i.fullTitle %>
+                </p>
+              </div>
+              <% }) %> <% } %>
             </div>
+          </div>
         </div>
-    </body>
-    <script
-        src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script>
+      </div>
+    </div>
+  </body>
+  <script
+    src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+  <script>
     reloads;
     reloadThree;
 

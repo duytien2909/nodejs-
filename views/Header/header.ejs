@@ -1,25 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
         <link
             href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
             rel="stylesheet"
             integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
-            crossorigin="anonymous">
-        <link rel="stylesheet"
-            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-        <link rel="stylesheet" href="/css/main.css">
+            crossorigin="anonymous" />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" />
+        <link rel="stylesheet" href="/css/main.css" />
+        <style>
+           
+      .checkBox_input {
+        width: 60px;
+        background-color: #fff;
+        height: 23px;
+        left: -65px;
+        border-radius: 50px;
+        border: 2px solid;
+        cursor: pointer;
+      }
+      .checkBox_input p {
+        border-radius: 50%;
+        width: 20px;
+        height: 18px;
+        background-color: black;
+        margin: 1px 0 0 0;
+      }
+      .checkbox-wrapper-2 .ikxBAC {
+        appearance: none;
+        background-color: #dfe1e4;
+        border-radius: 72px;
+        border-style: none;
+        flex-shrink: 0;
+        height: 20px;
+        margin: 0;
+        position: relative;
+        width: 30px;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC::before {
+        bottom: -6px;
+        content: "";
+        left: -6px;
+        position: absolute;
+        right: -6px;
+        top: -6px;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC,
+      .checkbox-wrapper-2 .ikxBAC::after {
+        transition: all 100ms ease-out;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC::after {
+        background-color: #fff;
+        border-radius: 50%;
+        content: "";
+        height: 14px;
+        left: 3px;
+        position: absolute;
+        top: 3px;
+        width: 14px;
+      }
+
+      .checkbox-wrapper-2 input[type="checkbox"] {
+        cursor: default;
+      }
+
+      .checkbox-wrapper-2 .ikxBAC:checked {
+        background-color: #6e79d6;
+        & p {
+          display: none;
+        }
+      }
+
+      .checkbox-wrapper-2 .ikxBAC:checked::after {
+        background-color: #fff;
+        left: 13px;
+        & .container-fluid {
+          background-color: aqua;
+        }
+      }
+
+      .checkbox-wrapper-2 :focus:not(.focus-visible) {
+        outline: 0;
+      }
+    </style>
     </head>
     <body>
-        <div >
+        <div>
             <div>
-                <div class="d-flex justify-content-between md-5">
+                <div
+                    class="d-flex align-item-center  justify-content-between md-5">
                     <div>MSSV</div>
                     <div>Movie Information</div>
-                    <div>Dark Mode</div>
+                    <div>
+                        <div class="d-flex">
+                            <div class="checkbox-wrapper-2" onclick="myFn()">
+                                <input type="checkbox" class="sc-gJwTLC ikxBAC" />
+                            </div>
+                            <label class="darkMode">Dark Mode</label>
+                            <label class="lightMode">Light Mode</label>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -28,4 +116,10 @@
         src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
+    <script>
+    function myFn(){
+    var element = document.querySelector('body');
+    element.classList.toggle("dark-mode");
+}
+  </script>
 </html>

@@ -37,6 +37,7 @@ exports.movieManager = async (req, res) => {
   const movieTitle = await db.Movies.map((i) => i)
     .slice(perpage * page - perpage)
     .slice(0, perpage);
+
   const count = await db.Movies.length;
   try {
     res.render("FAV/", {
@@ -44,6 +45,22 @@ exports.movieManager = async (req, res) => {
       movieTitle,
       current: page,
       pages: Math.ceil(count / perpage),
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+exports.searchMovie = async (req, res) => {
+  const locals = {
+    title: "Search Movie",
+  };
+  try {
+    let searchProduct = req.body.searchItem;
+    const movie = await db.Movies.find((i) => i.title === searchProduct);
+    res.render("FAV/search", {
+      movie,
+      locals,
     });
   } catch (error) {
     console.log(error);
@@ -95,14 +112,12 @@ exports.editMovie = async (req, res) => {
 exports.editPutMovie = async (req, res) => {
   try {
     const id = req.params.id;
-    const data = req.body
-    console.log(data);
+    const data = req.body;
 
     let index = db.Movies.findIndex((i) => i.id === id);
 
-
     if (index >= 0) {
-      db.Movies.splice(index, 1,data);
+      db.Movies.splice(index, 1, data);
     }
     res.redirect("/FAV/");
   } catch (error) {
@@ -110,13 +125,13 @@ exports.editPutMovie = async (req, res) => {
   }
 };
 
-exports.deleteMovie = async (req,res) =>{
+exports.deleteMovie = async (req, res) => {
   try {
     const id = req.params.id;
     const data = await db.Movies.find((i) => i.id === id);
-    db.Movies.splice(data,1)
-    res.redirect('/FAV/');
+    db.Movies.splice(data, 1);
+    res.redirect("/FAV/");
   } catch (error) {
-    console.log(error)
+    console.log(error);
   }
-  };
+};

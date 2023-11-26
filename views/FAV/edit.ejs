@@ -4,6 +4,25 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><%- locals.title %>></title>
+        <style>
+            .dark-mode {
+        background-color: rgb(17, 16, 16);
+        & p,
+        h2,
+        span,label,div {
+          color: #cccccc;
+        }
+        & .lightMode {
+          display: block;
+        }
+        & .darkMode {
+          display: none;
+        }
+      }
+      .lightMode {
+        display: none;
+      }
+        </style>
     </head>
     <body>
         <div

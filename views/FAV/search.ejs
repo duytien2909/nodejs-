@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title><%- locals.title %></title>
+        <style>
+            .dark-mode {
+        background-color: rgb(17, 16, 16);
+        & p,
+        h2,
+        span ,div,label,th,tr{
+          color: #cccccc;
+        }
+        & .lightMode {
+          display: block;
+        }
+        & .darkMode {
+          display: none;
+        }
+      }
+      .lightMode {
+        display: none;
+      }
+        </style>
+    </head>
+    <body>
+        <div
+            class="d-flex justify-content-between flex-wrap flex-md nowrap align-item-center pt-3 pb-2mb-3 border-bottom">
+            <h1 class="h2 ">Search</h1>
+        </div>
+
+        <table class="table-reponsive">
+            <% if (movie != '') { %>
+            <table class="table table-bordered ">
+                <thead>
+                    <tr>
+                        <th scope="col">Product Name</th>
+                        <th scope="col">Product Image</th>
+                        <th scope="col">Product Description</th>
+                        <th scope="col">Product Price</th>
+                        <th scope="col">Product Color</th>
+                        <th scope="col">Product Size</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="align-middle">
+                        <td class="text-black">
+                            <%= movie.title %>
+                        </td>
+                        <td>
+                            <img src="<%= movie.image %>" alt width="160"
+                                height="100">
+                        </td>
+                        <td>
+                            <%= movie.year %>
+                        </td>
+                        <td>
+                            <%= movie.plot %>
+                        </td>
+                        <td>
+                            <%= movie.languages %>
+                        </td>
+                        <td>
+                            <%= movie.companies %>
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+            <a href="/" type="button"
+                class="btn btn-info btn-small text-white mt-4">Back</a>
+            <% } else {%>
+            No results found
+            <% } %>
+        </table>
+    </body>
+</html>

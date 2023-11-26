@@ -23,7 +23,8 @@ router.post('/FAV/add',upload.single("image"),movieController.postAddMovie);
 router.get('/FAV/view/:id',movieController.viewMovie)
 router.get('/FAV/edit/:id',movieController.editMovie)
 router.post('/FAV/edit/:id',upload.single("image"),movieController.editPutMovie);
-router.delete('/FAV/edit/:id',movieController.deleteMovie);
+router.delete('/FAV/edit/:id', movieController.deleteMovie);
+router.post('/search',movieController.searchMovie)
 
 
 module.exports = router;

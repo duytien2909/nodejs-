@@ -4,11 +4,30 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title><%- locals.title %></title>
+        <style>
+            .dark-mode {
+        background-color: rgb(17, 16, 16);
+        & p,
+        h2,
+        span ,h1,div{
+          color: #cccccc;
+        }
+        & .lightMode {
+          display: block;
+        }
+        & .darkMode {
+          display: none;
+        }
+      }
+      .lightMode {
+        display: none;
+      }
+        </style>
     </head>
     <body>
         <div
             class="d-fle justify-conten-between flex-wrap flex-md nowrap align-item-center pt-3 pb-2mb-3 border-bottom">
-            <h1 class="h2 text-white"><%= data.title %></h1>
+            <h1 class="h2 "><%= data.title %></h1>
             <div class="btn-tootbar mb-2 mb-md 0">
                 <div class="btn-group me-2">
                     <button class="btn btn-sm btn-outline-secondary">share</button>
@@ -26,12 +45,12 @@
                             <li class="breadcrumb-item">
                                 <a href="/FAV/">Dasboard</a>
                             </li>
-                            <li class="breadcrumb-item active text-white">
+                            <li class="breadcrumb-item active ">
                                 <%= data.title %>
                             </li>
                         </ol>
                     </nav>
-                    <div class="col text-end fw-lighter text-white">
+                    <div class="col text-end fw-lighter ">
                         <b>Movie Id: <%= data.id %></b>
                     </div>
                 </div>
@@ -71,6 +90,14 @@
                         <b>Movie Plot</b>
                     </div>
                     <div class="col"><%= data.plot %></div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="row">
+                    <div class="col" style="max-width: 140px;">
+                        <b>Actor</b>
+                    </div>
+                    <div class="col"><%= data.actorList.map(i => i.asCharacter) %></div>
                 </div>
             </li>
             <li class="list-group-item">

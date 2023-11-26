@@ -12,15 +12,42 @@
         <link rel="stylesheet"
             href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
         <link rel="stylesheet" href="/css/main.css">
+        <style>
+            .dark-mode {
+        background-color: rgb(17, 16, 16);
+        & p,
+        h2,
+        span ,td,th,div,label{
+          color: #cccccc;
+          /* display: block; */
+        }
+        & .lightMode {
+          display: block;
+        }
+        & .darkMode {
+          display: none;
+        }
+      }
+      .lightMode {
+        display: none;
+      }
+        </style>
     </head>
     <body>
 
-        <div
-            class="btn-tootbar mb-2 mb-md 0 d-md-flex justify-content-md-end">
-            <div class="btn-group d-grid  me-2 ">
-                <a href="/FAV/add"
-                    class="btn btn-sm btn-outline-secondary md-5">+
-                    New Movie</a>
+        <div class="d-flex justify-content-between">
+
+            <div>
+                <a type="button" class="btn btn-info btn-small text-white " href="/">Home Movie</a>
+            </div>
+            <div
+                class="btn-tootbar mb-2 mb-md 0 d-md-flex justify-content-md-end">
+                <div class="btn-group d-grid  me-2 ">
+
+                    <a href="/FAV/add"
+                        class="btn btn-sm btn-outline-secondary md-5">+
+                        New Movie</a>
+                </div>
             </div>
         </div>
 
@@ -54,7 +81,7 @@
                                 <% } else {%>
                                 <span style="color: red;">image error, title: <%=
                                     element.title %></span>
-                                <img src="/upload/<%= element.image  %>"
+                                <img src="/upload/<%= element.image %>"
                                     alt="anh <%= element.title %>" width="160"
                                     height="100">
                                 <% } %>

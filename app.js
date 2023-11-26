@@ -2,7 +2,6 @@ require("dotenv").config();
 
 const express = require("express");
 const expresslayouts = require("express-ejs-layouts");
-const session = require("express-session");
 const methodOverride = require("method-override");
 const router = require("./src/router/index");
 
@@ -14,6 +13,7 @@ app.use(express.json());
 app.use(methodOverride("_method"));
 
 app.use(express.static("public"));
+app.use("/upload", express.static("./upload"));
 
 app.use(expresslayouts);
 app.set("layout", "./layouts/main");
