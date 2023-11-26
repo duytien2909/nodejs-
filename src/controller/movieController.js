@@ -58,6 +58,9 @@ exports.searchMovie = async (req, res) => {
   try {
     let searchProduct = req.body.searchItem;
     const movie = await db.Movies.find((i) => i.title === searchProduct);
+    if (!movie) {
+      alert("Movie not found")
+    }
     res.render("FAV/search", {
       movie,
       locals,
